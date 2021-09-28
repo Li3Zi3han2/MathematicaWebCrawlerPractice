@@ -1,0 +1,1093 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     43179,       1085]
+NotebookOptionsPosition[     41647,       1058]
+NotebookOutlinePosition[     42062,       1075]
+CellTagsIndexPosition[     42019,       1072]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"bbs", ".", "mihoyo", ".", "com"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SetDirectory", "[", "\"\<F:\\\\\:7c73\:6e38\:793e\>\"", "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"getAttribute", "[", 
+      RowBox[{
+       RowBox[{"HoldPattern", "[", 
+        RowBox[{"session_WebSessionObject", ":", "$CurrentWebSession"}], 
+        "]"}], ",", "element_WebElementObject", ",", "attribute_String"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "sessionInfo", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"sessionInfo", "=", 
+         RowBox[{"session", "/@", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<SessionID\>\"", ",", "\"\<Browser\>\"", ",", "\"\<URL\>\""}], 
+           "}"}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"WebUnit`Private`attribute", "[", 
+         RowBox[{"sessionInfo", ",", 
+          RowBox[{"element", "[", "\"\<ElementId\>\"", "]"}], ",", 
+          "attribute"}], "]"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "address", "=", "\"\<https://bbs.mihoyo.com/ys/article/5643838\>\""}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"session", "=", 
+     RowBox[{"StartWebSession", "[", 
+      RowBox[{"\"\<Firefox\>\"", ",", 
+       RowBox[{"Visible", "\[Rule]", "False"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"WebExecute", "[", 
+     RowBox[{"\"\<OpenPage\>\"", "\[Rule]", "address"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Pause", "[", "6", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"element", "=", 
+     RowBox[{"WebExecute", "[", 
+      RowBox[{"\"\<LocateElements\>\"", "\[Rule]", 
+       RowBox[{
+       "\"\<XPath\>\"", "\[Rule]", 
+        "\"\</html/body/div[1]/div/div/div[2]/div/div[1]/div[1]/div[2]/div/\
+img\>\""}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"image", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"getAttribute", "[", 
+        RowBox[{"#", ",", "\"\<large\>\""}], "]"}], "&"}], "/@", 
+      "element"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"URLDownload", "[", 
+       RowBox[{
+        RowBox[{
+        "image", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+        RowBox[{"\"\<5643838 - \>\"", "<>", 
+         RowBox[{"IntegerString", "[", 
+          RowBox[{"i", ",", "10", ",", "2"}], "]"}], "<>", 
+         "\"\< - GK2020@192243650 - \:9b48.\>\"", "<>", 
+         RowBox[{"StringExtract", "[", 
+          RowBox[{
+           RowBox[{
+           "image", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+           ",", 
+           RowBox[{"\"\<.\>\"", "\[Rule]", 
+            RowBox[{"-", "1"}]}]}], "]"}]}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", 
+        RowBox[{"Length", "[", "image", "]"}]}], "}"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"DeleteObject", "[", "session", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.8255984052477903`*^9, {3.834029903605707*^9, 3.83402991817773*^9}, {
+   3.83402997644532*^9, 3.834030009788269*^9}, 3.834030056480341*^9, {
+   3.834030214975584*^9, 3.8340302259801483`*^9}, {3.834030309124585*^9, 
+   3.8340303158162704`*^9}, {3.834030396242565*^9, 3.8340304506784554`*^9}, {
+   3.8340304842850513`*^9, 3.8340305254982357`*^9}, {3.8340305696351995`*^9, 
+   3.8340306029560385`*^9}},
+ CellLabel->
+  "In[133]:=",ExpressionUUID->"72326dd4-1fe4-4c5d-88d7-26008f980fce"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"danbooru", ".", "donmai", ".", "us"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+    "SetDirectory", "[", 
+     "\"\<C:\\\\Users\\\\Li \
+Zihan\\\\Desktop\\\\\:65b0\:5efa\:6587\:4ef6\:5939\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "page", "=", 
+     "\"\<https://danbooru.donmai.us/posts?page=1&tags=sh_%28562835932%29\>\"\
+"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"address", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{"page", ",", "\"\<XMLObject\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"id", "=", 
+     RowBox[{"Cases", "[", 
+      RowBox[{"address", ",", 
+       RowBox[{
+        RowBox[{"XMLElement", "[", 
+         RowBox[{"\"\<article\>\"", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"\"\<id\>\"", "\[Rule]", "_"}], ",", 
+            RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<post-preview\>\""}], ",", 
+            RowBox[{"\"\<data-id\>\"", "\[Rule]", "dataId_"}], ",", 
+            RowBox[{"\"\<data-has-sound\>\"", "\[Rule]", "\"\<false\>\""}], 
+            ",", "__"}], "}"}], ",", "_"}], "]"}], "\[RuleDelayed]", 
+        "dataId"}], ",", 
+       RowBox[{"+", "\[Infinity]"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"url", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"\"\<https://danbooru.donmai.us/posts/\>\"", "<>", "#"}], 
+       "&"}], "/@", "id"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"temp", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{
+          "url", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+          "\"\<XMLObject\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"href", "=", 
+        RowBox[{
+         RowBox[{"Cases", "[", 
+          RowBox[{"temp", ",", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"\"\<\\n    Size: \>\"", ",", 
+              RowBox[{"XMLElement", "[", 
+               RowBox[{"\"\<a\>\"", ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"\"\<shape\>\"", "\[Rule]", "\"\<rect\>\""}], ",", 
+                  RowBox[{"\"\<href\>\"", "\[Rule]", "href_"}]}], "}"}], ",", 
+                "_"}], "]"}], ",", "_"}], "}"}], "\[RuleDelayed]", "href"}], 
+           ",", 
+           RowBox[{"+", "\[Infinity]"}]}], "]"}], "\[LeftDoubleBracket]", "1",
+          "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"URLDownload", "[", 
+        RowBox[{"href", ",", 
+         RowBox[{"StringExtract", "[", 
+          RowBox[{"href", ",", 
+           RowBox[{"\"\</\>\"", "\[Rule]", 
+            RowBox[{"-", "1"}]}]}], "]"}]}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", 
+        RowBox[{"Length", "[", "url", "]"}]}], "}"}]}], "]"}], 
+    ";"}]}]}]], "Input",ExpressionUUID->"5ae497d3-82e3-4bbb-8952-\
+0045c163810e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"yande", ".", "re"}], "\[IndentingNewLine]", "pool\:4e0b\:8f7d"}],
+    "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pool", "=", "\"\<https://yande.re/pool/show/96732\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"st", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{"pool", ",", "\"\<XMLObject\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"address", "=", 
+     RowBox[{"Cases", "[", 
+      RowBox[{"st", ",", 
+       RowBox[{
+        RowBox[{"XMLElement", "[", 
+         RowBox[{"\"\<span\>\"", ",", 
+          RowBox[{"{", 
+           RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<plid\>\""}], "}"}], ",", 
+          RowBox[{"{", "url_", "}"}]}], "]"}], "\[RuleDelayed]", 
+        RowBox[{"StringExtract", "[", 
+         RowBox[{"url", ",", 
+          RowBox[{"\"\< \>\"", "\[Rule]", "2"}]}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "Infinity"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "\[LessEqual]", 
+       RowBox[{"Length", "[", "address", "]"}]}], ",", 
+      RowBox[{"i", "=", 
+       RowBox[{"i", "+", "1"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"post", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{
+          "address", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+          ",", "\"\<XMLObject\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"img", "=", 
+        RowBox[{
+         RowBox[{"Cases", "[", 
+          RowBox[{"post", ",", 
+           RowBox[{
+            RowBox[{"XMLElement", "[", 
+             RowBox[{"\"\<a\>\"", ",", 
+              RowBox[{"{", 
+               RowBox[{"___", ",", 
+                RowBox[{
+                "\"\<class\>\"", "\[Rule]", 
+                 "\"\<original-file-unchanged\>\""}], ",", "___", ",", 
+                RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<png\>\""}], ",", "___", 
+                ",", 
+                RowBox[{"\"\<href\>\"", "\[Rule]", "href_"}], ",", "___"}], 
+               "}"}], ",", 
+              RowBox[{"{", "___", "}"}]}], "]"}], "\[RuleDelayed]", "href"}], 
+           ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "Infinity"}], "}"}], ",", "1"}], "]"}], 
+         "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], ";", 
+       RowBox[{"name", "=", 
+        RowBox[{"StringExtract", "[", 
+         RowBox[{"img", ",", 
+          RowBox[{"\"\</\>\"", "\[Rule]", 
+           RowBox[{"-", "1"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"URLDownload", "[", 
+        RowBox[{"img", ",", 
+         RowBox[{"URLDecode", "[", "name", "]"}]}], "]"}]}]}], "]"}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.7418637946957183`*^9, 3.741863821572534*^9}, {
+  3.7418639304835234`*^9, 3.741863963291586*^9}, {3.7418640499852605`*^9, 
+  3.741864087500518*^9}, {3.7418641420056195`*^9, 3.741864191809026*^9}, {
+  3.7418643415129175`*^9, 3.741864343095847*^9}, {3.741865453189479*^9, 
+  3.741865456561953*^9}, {3.7420374197346725`*^9, 3.7420374358481865`*^9}, {
+  3.7420377655034323`*^9, 3.742037781955921*^9}, {3.742039546401621*^9, 
+  3.742039559124684*^9}, {3.8088176466778564`*^9, 3.8088176742674475`*^9}, {
+  3.8088181801326323`*^9, 3.808818180966069*^9}, {3.811141019749696*^9, 
+  3.811141038056038*^9}, {3.8111413349727163`*^9, 3.811141352566428*^9}, {
+  3.823939471002941*^9, 3.823939519860358*^9}, {3.8241057782604523`*^9, 
+  3.824105781193673*^9}},ExpressionUUID->"8e80540f-0483-4f72-85e0-\
+1c0808f8f62c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "\:534a\:6b21\:5143", "\[IndentingNewLine]", 
+     "\:56fe\:7247\:5730\:5740\:793a\:4f8b"}], "\:ff1a", 
+    RowBox[{
+     RowBox[{"https", ":"}], "//", 
+     RowBox[{"p9", "-", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"bcy", ".", "byteimg", ".", "com"}], "/", "img"}], "/", 
+         "banciyuan"}], "/", "87"}], 
+       RowBox[{
+        RowBox[{"a8aa62717d4f35b59b68be5a7528ef", "~", "noop"}], ".", 
+        "png"}]}]}]}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+    "SetDirectory", "[", 
+     "\"\<D:\\\\\:56fe\:7247\\\\\:5199\:771f\\\\\:65b0\:5efa\:6587\:4ef6\:5939\
+\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"getAttribute", "[", 
+      RowBox[{
+       RowBox[{"HoldPattern", "[", 
+        RowBox[{"session_WebSessionObject", ":", "$CurrentWebSession"}], 
+        "]"}], ",", "element_WebElementObject", ",", "attribute_String"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "sessionInfo", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"sessionInfo", "=", 
+         RowBox[{"session", "/@", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<SessionID\>\"", ",", "\"\<Browser\>\"", ",", "\"\<URL\>\""}], 
+           "}"}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"WebUnit`Private`attribute", "[", 
+         RowBox[{"sessionInfo", ",", 
+          RowBox[{"element", "[", "\"\<ElementId\>\"", "]"}], ",", 
+          "attribute"}], "]"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "address", "=", 
+     "\"\<https://bcy.net/item/detail/6942051691059485704\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"session", "=", 
+     RowBox[{"StartWebSession", "[", 
+      RowBox[{"\"\<Firefox\>\"", ",", 
+       RowBox[{"Visible", "\[Rule]", "False"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"WebExecute", "[", 
+     RowBox[{"\"\<OpenPage\>\"", "\[Rule]", "address"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Pause", "[", "6", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"element", "=", 
+     RowBox[{"WebExecute", "[", 
+      RowBox[{"\"\<LocateElements\>\"", "\[Rule]", 
+       RowBox[{
+       "\"\<XPath\>\"", "\[Rule]", 
+        "\"\</html/body/div/div/div[1]/div/div[1]/div/div[1]/article/div[1]/\
+div[2]/div[position()>=2]/div/div/img\>\""}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"image", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"getAttribute", "[", 
+        RowBox[{"#", ",", "\"\<src\>\""}], "]"}], "&"}], "/@", "element"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"URLDownload", "[", 
+       RowBox[{
+        RowBox[{"StringReplace", "[", 
+         RowBox[{
+          RowBox[{
+          "image", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+          ",", 
+          RowBox[{
+           RowBox[{"\"\<~\>\"", "~~", "a__", "~~", "\"\<.image\>\""}], 
+           "\[RuleDelayed]", "\"\<~noop.image\>\""}]}], "]"}], ",", 
+        RowBox[{
+         RowBox[{"IntegerString", "[", 
+          RowBox[{"i", ",", "10", ",", "4"}], "]"}], "<>", "\"\<.jpg\>\""}]}],
+        "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", 
+        RowBox[{"Length", "[", "image", "]"}]}], "}"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"DeleteObject", "[", "session", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.8111409752587748`*^9, 3.8111410069511175`*^9}, {
+   3.8111417286501923`*^9, 3.8111417464427257`*^9}, {3.8255983895599313`*^9, 
+   3.82559839651748*^9}, {3.8255985809225054`*^9, 3.825598582136031*^9}, 
+   3.825598615901805*^9},ExpressionUUID->"69ce0e05-d0a7-4cf7-86c0-\
+c7b3425a7ca0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "\:8f7b\:5c0f\:8bf4\:6587\:5e93", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "\:622a\:81f32019\:5e745\:670826\:65e5", "\:ff0c", 
+    "\:5171\:67092569\:672c"}], "*)"}], "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"n", "=", "2569"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"address", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"\"\<http://dl.wkcdn.com/txtbig5/\>\"", "<>", 
+        RowBox[{"IntegerString", "[", 
+         RowBox[{"Floor", "[", 
+          FractionBox["i", "1000"], "]"}], "]"}], "<>", "\"\</\>\"", "<>", 
+        RowBox[{"IntegerString", "[", "i", "]"}], "<>", "\"\<.txt\>\""}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "471"}], ",", 
+      RowBox[{"i", "\[LessEqual]", "471"}], ",", 
+      RowBox[{"i", "=", 
+       RowBox[{"i", "+", "1"}]}], ",", 
+      RowBox[{
+       RowBox[{"temp", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{
+          "address", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+          ",", "\"\<Text\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"temp", "\[Equal]", "$Failed"}], ",", 
+         RowBox[{"Continue", "[", "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"name", "=", 
+        RowBox[{
+         RowBox[{"IntegerString", "[", 
+          RowBox[{"i", ",", "10", ",", "4"}], "]"}], "<>", "\"\<. \>\"", "<>", 
+         RowBox[{
+          RowBox[{"StringCases", "[", 
+           RowBox[{"temp", ",", 
+            RowBox[{
+             RowBox[{"\"\<\\n<\>\"", "~~", 
+              RowBox[{"Shortest", "[", "x__", "]"}], "~~", "\"\<>\\n\>\""}], 
+             "\[Rule]", "x"}]}], "]"}], "\[LeftDoubleBracket]", "1", 
+          "\[RightDoubleBracket]"}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"name", "=", 
+        RowBox[{"StringReplace", "[", 
+         RowBox[{"name", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"\"\<\\\\\>\"", "\[Rule]", "\"\<\:ff3c\>\""}], ",", 
+            RowBox[{"\"\</\>\"", "\[Rule]", "\"\<\:ff0f\>\""}], ",", 
+            RowBox[{"\"\<:\>\"", "\[Rule]", "\"\<\:ff1a\>\""}], ",", 
+            RowBox[{"\"\<*\>\"", "\[Rule]", "\"\<\[Times]\>\""}], ",", 
+            RowBox[{"\"\<?\>\"", "\[Rule]", "\"\<\:ff1f\>\""}], ",", 
+            RowBox[{
+            "\"\<\\\"\>\"", "\[Rule]", "\"\<\[OpenCurlyDoubleQuote]\>\""}], 
+            ",", 
+            RowBox[{"\"\<<\>\"", "\[Rule]", "\"\<\>\""}], ",", 
+            RowBox[{"\"\<>\>\"", "\[Rule]", "\"\<\>\""}], ",", 
+            RowBox[{"\"\<|\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"Export", "[", 
+        RowBox[{
+         RowBox[{
+         "\"\<D:/\:8f7b\:5c0f\:8bf4/\>\"", "<>", "name", "<>", 
+          "\"\<.txt\>\""}], ",", "temp"}], "]"}]}]}], "]"}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGCQAGIQLVTAYcu/+rUjjJb2fOYKolnqIz1AdJZMbRiIfle9
+JAJEX8nkjwPRITs1UkF0x46EHBAtsCAzH0SbzFtRDqKZEjxrQLTjyb+NYP1v
+W9tBtFv2h36wOQ/9JoLozu+5EQJAemuMTzyInnKlbBKI7lJqAtMK5zdNA9Fv
+hHxngeWVueaD6IoPNctB9J1n4htA9IXym9tBtFpoJ4sgkObc4sYGom+5/BQH
+0Q8LPGRA9MUF1gog2qt4uTKIDvzBlgWiWXp9c0B0hRZHLYj+pJleD6JfxTnM
+ANHGgpPXgeiXK7r3guglJ/uPg+nTn09KgcIp7S+Yrllxr2GR0BvHOvV9nSB6
+yQHvSzqpbxx35EhcBdG/J1+5C6Kzhb+DaQA9Wrs3
+  "],ExpressionUUID->"2b18240c-dcbf-4299-b806-ec7c66705065"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "\:5f69\:8679\:5c9bOST", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"title", "=", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"website", "=", 
+          RowBox[{"Import", "[", 
+           RowBox[{
+            RowBox[{"\"\<https://www.latale.com/media/music?page=\>\"", "<>", 
+             RowBox[{"ToString", "[", "i", "]"}]}], ",", 
+            "\"\<XMLObject\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Cases", "[", 
+          RowBox[{"website", ",", 
+           RowBox[{
+            RowBox[{"XMLElement", "[", 
+             RowBox[{"\"\<div\>\"", ",", 
+              RowBox[{"{", 
+               RowBox[{"___", ",", 
+                RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<title\>\""}]}], 
+               "}"}], ",", 
+              RowBox[{"{", "title_", "}"}]}], "]"}], "\[RuleDelayed]", 
+            "title"}], ",", 
+           RowBox[{"+", "\[Infinity]"}]}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "3"}], "}"}]}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"creator", "=", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"website", "=", 
+          RowBox[{"Import", "[", 
+           RowBox[{
+            RowBox[{"\"\<https://www.latale.com/media/music?page=\>\"", "<>", 
+             RowBox[{"ToString", "[", "i", "]"}]}], ",", 
+            "\"\<XMLObject\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Cases", "[", 
+          RowBox[{"website", ",", 
+           RowBox[{
+            RowBox[{"XMLElement", "[", 
+             RowBox[{"\"\<div\>\"", ",", 
+              RowBox[{"{", 
+               RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<title-wrap\>\""}], 
+               "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"__", ",", 
+                RowBox[{"XMLElement", "[", 
+                 RowBox[{"\"\<div\>\"", ",", 
+                  RowBox[{"{", 
+                   RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<desc\>\""}], 
+                   "}"}], ",", 
+                  RowBox[{"{", "creator_", "}"}]}], "]"}], ",", "__"}], 
+               "}"}]}], "]"}], "\[RuleDelayed]", "creator"}], ",", 
+           RowBox[{"+", "\[Infinity]"}]}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "3"}], "}"}]}], "]"}], "]"}]}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.820209769219062*^9, 3.820209866320156*^9}, {
+   3.820210151439604*^9, 3.8202101518431125`*^9}, {3.820210196019967*^9, 
+   3.8202102023716307`*^9}, {3.8202102400883093`*^9, 3.820210320612958*^9}, {
+   3.8202103825533457`*^9, 3.8202103907056103`*^9}, {3.8202104684068623`*^9, 
+   3.820210480512588*^9}, 3.8202114211260777`*^9, {3.8202118685001755`*^9, 
+   3.8202119572026052`*^9}, {3.8202121334854846`*^9, 3.820212210671833*^9}, {
+   3.8202122591956234`*^9, 3.820212323583189*^9}, 3.8202162683769712`*^9},
+ CellLabel->
+  "In[198]:=",ExpressionUUID->"6d414074-fb32-4629-8481-faeeff678118"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"composer", "=", 
+   RowBox[{
+    RowBox[{"StringTrim", "[", 
+     RowBox[{
+      RowBox[{"Flatten", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StringCases", "[", 
+            RowBox[{"#", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                "\"\<[\:c791\:ace1/\:d3b8\:ace1\>\"", "~~", "a__", "~~", 
+                 "\"\<]\>\""}], "\[RuleDelayed]", "a"}], ",", 
+               RowBox[{
+                RowBox[{
+                "\"\<[\:c791\:ace1\>\"", "~~", "a__", "~~", "\"\</\>\""}], 
+                "\[RuleDelayed]", "a"}]}], "}"}]}], "]"}], "&"}], "/@", 
+          "creator"}], ")"}], "/.", 
+        RowBox[{
+         RowBox[{"{", "}"}], "\[Rule]", "\"\<None\>\""}]}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"\"\<-\>\"", "|", "\"\< \>\""}], ")"}], ".."}]}], "]"}], "/.", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+      "\"\<\:c774\:c0c1\:d654(ASTRO MAN)\>\"", "\[Rule]", 
+       "\"\<Astroman\>\""}], ",", 
+      RowBox[{"\"\<\:c724\:d604\:d0dd(DINY)\>\"", "\[Rule]", "\"\<DINY\>\""}],
+       ",", 
+      RowBox[{"\"\<\:bc15\:c9c4\:bc30(ESTi)\>\"", "\[Rule]", "\"\<ESTi\>\""}],
+       ",", 
+      RowBox[{"\"\<\:d669\:c8fc\:c740(be)\>\"", "\[Rule]", "\"\<be\>\""}], 
+      ",", 
+      RowBox[{"\"\<\:c870\:acbd\:b0a8(Jo)\>\"", "\[Rule]", "\"\<Jo\>\""}], 
+      ",", 
+      RowBox[{"\"\<\:c2e0\:b3d9\:d718(M2U)\>\"", "\[Rule]", "\"\<M2U\>\""}], 
+      ",", 
+      RowBox[{"\"\<\:c815\:ad6c\:d604(Nien)\>\"", "\[Rule]", "\"\<Nien\>\""}],
+       ",", 
+      RowBox[{
+      "\"\<\:c2ec\:c7ac\:d604(Electronic Boutique)\>\"", "\[Rule]", 
+       "\"\<Electronic Boutique\>\""}]}], "}"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"arranger", "=", 
+   RowBox[{
+    RowBox[{"StringTrim", "[", 
+     RowBox[{
+      RowBox[{"Flatten", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StringCases", "[", 
+            RowBox[{"#", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                "\"\<[\:c791\:ace1/\:d3b8\:ace1\>\"", "~~", "a__", "~~", 
+                 "\"\<]\>\""}], "\[RuleDelayed]", "a"}], ",", 
+               RowBox[{
+                RowBox[{
+                "\"\</\:d3b8\:ace1\>\"", "~~", "a__", "~~", "\"\<]\>\""}], 
+                "\[RuleDelayed]", "a"}], ",", 
+               RowBox[{
+                RowBox[{
+                "\"\<[\:d3b8\:ace1\>\"", "~~", "a__", "~~", "\"\<]\>\""}], 
+                "\[RuleDelayed]", "a"}]}], "}"}]}], "]"}], "&"}], "/@", 
+          "creator"}], ")"}], "/.", 
+        RowBox[{
+         RowBox[{"{", "}"}], "\[Rule]", "\"\<None\>\""}]}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"\"\<-\>\"", "|", "\"\< \>\""}], ")"}], ".."}]}], "]"}], "/.", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+      "\"\<\:c774\:c0c1\:d654(ASTRO MAN)\>\"", "\[Rule]", 
+       "\"\<Astroman\>\""}], ",", 
+      RowBox[{"\"\<\:c724\:d604\:d0dd(DINY)\>\"", "\[Rule]", "\"\<DINY\>\""}],
+       ",", 
+      RowBox[{"\"\<\:bc15\:c9c4\:bc30(ESTi)\>\"", "\[Rule]", "\"\<ESTi\>\""}],
+       ",", 
+      RowBox[{"\"\<\:d669\:c8fc\:c740(be)\>\"", "\[Rule]", "\"\<be\>\""}], 
+      ",", 
+      RowBox[{"\"\<\:c870\:acbd\:b0a8(Jo)\>\"", "\[Rule]", "\"\<Jo\>\""}], 
+      ",", 
+      RowBox[{"\"\<\:c2e0\:b3d9\:d718(M2U)\>\"", "\[Rule]", "\"\<M2U\>\""}], 
+      ",", 
+      RowBox[{"\"\<\:c815\:ad6c\:d604(Nien)\>\"", "\[Rule]", "\"\<Nien\>\""}],
+       ",", 
+      RowBox[{
+      "\"\<\:c2ec\:c7ac\:d604(Electronic Boutique)\>\"", "\[Rule]", 
+       "\"\<Electronic Boutique\>\""}]}], "}"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8202124484141207`*^9, 3.820212464074651*^9}, {
+  3.820212520426462*^9, 3.82021284782321*^9}, {3.8202128919867773`*^9, 
+  3.8202129940293612`*^9}, {3.820213161970395*^9, 3.820213209313466*^9}, {
+  3.8202154717191076`*^9, 3.820215500166748*^9}, {3.8202156468303795`*^9, 
+  3.8202157040988197`*^9}, {3.820217017050002*^9, 3.8202170180916247`*^9}},
+ CellLabel->
+  "In[200]:=",ExpressionUUID->"f595a717-6fa4-49d0-86ce-b94f52946952"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ntitle", "=", 
+   RowBox[{"StringReplace", "[", 
+    RowBox[{
+     RowBox[{"StringTrim", "[", "title", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<&#8211;\>\"", "\[Rule]", "\"\<-\>\""}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"number", "=", 
+  RowBox[{"StringTake", "[", 
+   RowBox[{"ntitle", ",", "3"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"name1", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"StringCases", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{
+         RowBox[{"\"\<[\>\"", "~~", "a__", "~~", "\"\<]\>\""}], 
+         "\[RuleDelayed]", "a"}]}], "]"}], "&"}], "/@", "ntitle"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"name2", "=", 
+   RowBox[{"Capitalize", "[", 
+    RowBox[{
+     RowBox[{"ToLowerCase", "[", 
+      RowBox[{"StringTrim", "[", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"StringCases", "[", 
+           RowBox[{"#", ",", 
+            RowBox[{
+             RowBox[{"\"\<]\>\"", "~~", "a__"}], "\[RuleDelayed]", "a"}]}], 
+           "]"}], "&"}], "/@", "ntitle"}], "]"}], "]"}], "]"}], ",", 
+     "\"\<TitleCase\>\""}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.82021074305335*^9, 3.8202107475102863`*^9}, {
+  3.820210788361101*^9, 3.82021079403795*^9}, {3.8202108726598573`*^9, 
+  3.8202110077076483`*^9}, {3.820211056744896*^9, 3.8202111467103653`*^9}, {
+  3.820211203571278*^9, 3.8202113295545397`*^9}, {3.820211413657563*^9, 
+  3.820211414394081*^9}, {3.820211940540614*^9, 3.8202119424099092`*^9}, {
+  3.82021197268999*^9, 3.8202119735994987`*^9}, {3.8202163128142824`*^9, 
+  3.8202163266611385`*^9}},
+ CellLabel->
+  "In[202]:=",ExpressionUUID->"29b1458f-6d59-41e4-aa5b-a067fb2231b4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nnn", "=", 
+   RowBox[{"MapThread", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"StringReplace", "[", 
+       RowBox[{
+        RowBox[{"StringJoin", "[", 
+         RowBox[{
+         "#1", ",", "\"\< - \:4f5c\:66f2\:ff1a\>\"", ",", "#2", ",", 
+          "\"\<\:ff0c\:7f16\:66f2\:ff1a\>\"", ",", "#3", ",", 
+          "\"\<\:ff0c[\>\"", ",", "#4", ",", "\"\<] \>\"", ",", "#5", ",", 
+          "\"\<.mp3\>\""}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"\"\<?\>\"", "\[Rule]", "\"\<\>\""}], ",", 
+          RowBox[{"\"\</\>\"", "\[Rule]", "\"\<,\>\""}]}], "}"}]}], "]"}], 
+      "&"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "number", ",", "composer", ",", "arranger", ",", "name1", ",", 
+       "name2"}], "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8202117130562153`*^9, 3.820211792675965*^9}, {
+   3.820212006041616*^9, 3.8202120094893723`*^9}, {3.820215751245835*^9, 
+   3.820215823609769*^9}, {3.8202163381958947`*^9, 3.820216339681342*^9}, {
+   3.8202165470206156`*^9, 3.8202165620919795`*^9}, 3.820216806145953*^9, {
+   3.8202171858329926`*^9, 3.820217193212967*^9}},
+ CellLabel->
+  "In[210]:=",ExpressionUUID->"be44dd62-a18f-4c5e-864a-70640213ec78"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", 
+   "\"\<C:\\\\Users\\\\Li Zihan\\\\Downloads\\\\Compressed\\\\Latale_OST \
+(2)\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"file", "=", 
+   RowBox[{"SortBy", "[", 
+    RowBox[{
+     RowBox[{"FileNames", "[", "]"}], ",", 
+     RowBox[{
+      RowBox[{"ToExpression", "[", 
+       RowBox[{"StringTake", "[", 
+        RowBox[{"#", ",", "3"}], "]"}], "]"}], "&"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MapThread", "[", 
+   RowBox[{"RenameFile", ",", 
+    RowBox[{"{", 
+     RowBox[{"file", ",", 
+      RowBox[{"Reverse", "@", "nnn"}]}], "}"}]}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8202160482657547`*^9, 3.8202160588026657`*^9}, {
+   3.820216171850665*^9, 3.820216182209959*^9}, {3.820216348115198*^9, 
+   3.8202163729613056`*^9}, {3.8202165748702087`*^9, 3.820216577722048*^9}, {
+   3.8202166288703694`*^9, 3.8202166304146395`*^9}, 3.8202167470063133`*^9, 
+   3.8202169991077766`*^9, {3.8202172070137186`*^9, 3.820217211423038*^9}},
+ CellLabel->
+  "In[211]:=",ExpressionUUID->"09d390b1-cef1-4878-8c60-ef9848661d1e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"idol", ".", "sankakucomplex"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"address", "=", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"st", "=", 
+          RowBox[{"Import", "[", 
+           RowBox[{
+            RowBox[{"StringJoin", "[", 
+             RowBox[{
+             "\"\<https://idol.sankakucomplex.com/post/show/\>\"", ",", 
+              RowBox[{"IntegerString", "[", 
+               RowBox[{"714912", "+", "i"}], "]"}]}], "]"}], ",", 
+            "\"\<XMLObject\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Cases", "[", 
+          RowBox[{"st", ",", 
+           RowBox[{
+            RowBox[{"XMLElement", "[", 
+             RowBox[{"\"\<a\>\"", ",", 
+              RowBox[{"{", 
+               RowBox[{"___", ",", 
+                RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<highres\>\""}], ",", 
+                "___", ",", 
+                RowBox[{"\"\<href\>\"", "\[Rule]", "href_"}], ",", "___"}], 
+               "}"}], ",", "___"}], "]"}], "\[RuleDelayed]", 
+            RowBox[{"StringJoin", "[", 
+             RowBox[{"\"\<https:\>\"", ",", "href"}], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "Infinity"}], "}"}]}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "0", ",", "29"}], "}"}]}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"name", "=", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"StringExtract", "[", 
+         RowBox[{"#", ",", " ", 
+          RowBox[{"\"\</\>\"", "\[Rule]", 
+           RowBox[{"-", "1"}]}], ",", 
+          RowBox[{"\"\<?\>\"", "\[Rule]", "1"}]}], "]"}], "&"}], ",", 
+       "address"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "\[LessEqual]", 
+       RowBox[{"Length", "[", "address", "]"}]}], ",", 
+      RowBox[{"i", "=", 
+       RowBox[{"i", "+", "1"}]}], ",", 
+      RowBox[{"URLDownload", "[", 
+       RowBox[{
+        RowBox[{
+        "address", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        ",", 
+        RowBox[{
+        "\"\<F:\\\\\:52a8\:6f2b\:56fe\:7247\\\\\:4e09\:6b21\:5143\\\\\:5317\
+\:898b\:3048\:308a\\\\\>\"", "<>", 
+         RowBox[{
+         "name", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}]}], 
+       "]"}]}], "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.811141532805224*^9, 
+  3.811141544038258*^9}},ExpressionUUID->"df4193ed-cb1f-44c5-b276-\
+7def7e68ea53"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "lofter", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"getAttribute", "[", 
+      RowBox[{
+       RowBox[{"HoldPattern", "[", 
+        RowBox[{"session_WebSessionObject", ":", "$CurrentWebSession"}], 
+        "]"}], ",", "element_WebElementObject", ",", "attribute_String"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "sessionInfo", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"sessionInfo", "=", 
+         RowBox[{"session", "/@", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<SessionID\>\"", ",", "\"\<Browser\>\"", ",", "\"\<URL\>\""}], 
+           "}"}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"WebUnit`Private`attribute", "[", 
+         RowBox[{"sessionInfo", ",", 
+          RowBox[{"element", "[", "\"\<ElementId\>\"", "]"}], ",", 
+          "attribute"}], "]"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"blog", "=", "\"\<https://kotatsukaya.lofter.com\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"session", "=", 
+     RowBox[{"StartWebSession", "[", 
+      RowBox[{"\"\<Firefox\>\"", ",", 
+       RowBox[{"Visible", "\[Rule]", "False"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"WebExecute", "[", 
+     RowBox[{"\"\<OpenPage\>\"", "\[Rule]", 
+      RowBox[{"blog", "<>", "\"\</view\>\""}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Pause", "[", "6", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"elements", "=", 
+     RowBox[{"WebExecute", "[", 
+      RowBox[{"\"\<LocateElements\>\"", "\[Rule]", 
+       RowBox[{
+       "\"\<XPath\>\"", "\[Rule]", 
+        "\"\</html/body/div[2]/div[1]/div[3]/div[position()<=5]/ul/li[*]/a\>\"\
+"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"posts", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"blog", "<>", 
+        RowBox[{"getAttribute", "[", 
+         RowBox[{"#", ",", "\"\<href\>\""}], "]"}]}], "&"}], "/@", 
+      "elements"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"i", "=", "1"}], ",", 
+     RowBox[{"i", "\[LessEqual]", 
+      RowBox[{"Length", "[", "posts", "]"}]}], ",", 
+     RowBox[{"i", "=", 
+      RowBox[{"i", "+", "1"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"post", "=", 
+       RowBox[{"Import", "[", 
+        RowBox[{
+         RowBox[{
+         "posts", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+         ",", "\"\<XMLObject\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"img", "=", 
+       RowBox[{"Cases", "[", 
+        RowBox[{"post", ",", 
+         RowBox[{
+          RowBox[{"XMLElement", "[", 
+           RowBox[{"\"\<a\>\"", ",", 
+            RowBox[{"{", 
+             RowBox[{"___", ",", 
+              RowBox[{"\"\<class\>\"", "\[Rule]", "\"\<imgclasstag\>\""}], 
+              ",", "___", ",", 
+              RowBox[{"\"\<bigimgsrc\>\"", "\[Rule]", "src_"}]}], "}"}], ",", 
+            RowBox[{"{", "___", "}"}]}], "]"}], "\[Rule]", "src"}], ",", 
+         RowBox[{"+", "\[Infinity]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"img", "=", 
+       RowBox[{"StringExtract", "[", 
+        RowBox[{"img", ",", 
+         RowBox[{"\"\<?\>\"", "\[Rule]", "1"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"URLDownload", "[", 
+       RowBox[{
+       "img", ",", 
+        "\"\<C:\\\\Users\\\\Li Zihan\\\\\:684c\:9762\\\\\:65b0\:5efa\:6587\
+\:4ef6\:5939\\\\\>\""}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.8124489424297276`*^9, 3.812449004265712*^9}, 
+   3.8124494982832794`*^9, {3.8124545538445787`*^9, 3.8124545632103004`*^9}, {
+   3.812454599914582*^9, 3.8124546001698914`*^9}, {3.8124546371215315`*^9, 
+   3.8124546392230844`*^9}, {3.812454679508999*^9, 3.8124547056254787`*^9}, {
+   3.8124547365680037`*^9, 3.812454749928403*^9}, {3.8124556292849693`*^9, 
+   3.8124556440156775`*^9}, {3.8124559995271873`*^9, 3.8124560111206684`*^9}, 
+   3.812456135494584*^9, {3.812456176296006*^9, 3.8124561953523865`*^9}, {
+   3.8124562452147284`*^9, 3.8124562757353897`*^9}, {3.8124563800311604`*^9, 
+   3.812456380386137*^9}, {3.8124564341670237`*^9, 3.8124564519932375`*^9}, {
+   3.8124564832369556`*^9, 3.812456501262932*^9}, {3.8124565808601875`*^9, 
+   3.8124565879574327`*^9}, {3.8124567754630637`*^9, 
+   3.8124567781710496`*^9}, {3.8124568143369617`*^9, 
+   3.8124568740275955`*^9}, {3.812456925797303*^9, 3.812456970329527*^9}, {
+   3.812457001541835*^9, 3.812457147909789*^9}, {3.812457251417801*^9, 
+   3.8124572549501314`*^9}, {3.812457336005625*^9, 3.8124573595386305`*^9}, {
+   3.8124586725889697`*^9, 3.812458718620668*^9}, {3.812458752683597*^9, 
+   3.8124587661172433`*^9}, {3.812461444427038*^9, 3.8124615350457654`*^9}, {
+   3.8124615767207923`*^9, 3.8124615768673687`*^9}, {3.812461656030155*^9, 
+   3.812461662962233*^9}, {3.812461711305938*^9, 3.812461712790823*^9}, {
+   3.812462074838021*^9, 3.81246208654812*^9}, 3.81246280720382*^9, {
+   3.812527127904457*^9, 3.8125271568806057`*^9}, {3.812527203165186*^9, 
+   3.8125272421739883`*^9}, {3.812527888903855*^9, 
+   3.812527896421774*^9}},ExpressionUUID->"6f8acd6c-bbfc-4c9b-9cbc-\
+4085e0e46d1c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"bilibili", ".", "com"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+    "SetDirectory", "[", 
+     "\"\<C:\\\\Users\\\\Li \
+Zihan\\\\Desktop\\\\\:65b0\:5efa\:6587\:4ef6\:5939 (4)\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"temp", "=", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"json", "=", 
+           RowBox[{"Import", "[", 
+            RowBox[{
+             RowBox[{
+             "\"\<https://api.bilibili.com/x/dynamic/feed/draw/doc_list?uid=\
+5074944&page_num=\>\"", "~~", 
+              RowBox[{"IntegerString", "[", 
+               RowBox[{"page", "-", "1"}], "]"}], "~~", 
+              "\"\<&page_size=30&biz=all&jsonp=jsonp\>\""}], ",", 
+             "\"\<String\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"StringCases", "[", 
+              RowBox[{"json", ",", 
+               RowBox[{
+                RowBox[{"\"\<\\\"dyn_id\\\":\\\"\>\"", "~~", 
+                 RowBox[{"Shortest", "[", "postID__", "]"}], "~~", 
+                 "\"\<\\\"\>\""}], "\[RuleDelayed]", "postID"}]}], "]"}], ",", 
+             RowBox[{"TakeList", "[", 
+              RowBox[{
+               RowBox[{"StringCases", "[", 
+                RowBox[{"json", ",", 
+                 RowBox[{
+                  RowBox[{"\"\<\\\"img_src\\\":\\\"\>\"", "~~", 
+                   RowBox[{"Shortest", "[", "imageSource__", "]"}], "~~", 
+                   "\"\<\\\"\>\""}], "\[RuleDelayed]", "imageSource"}]}], 
+                "]"}], ",", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringCases", "[", 
+                 RowBox[{"json", ",", 
+                  RowBox[{
+                   RowBox[{"\"\<\\\"count\\\":\>\"", "~~", 
+                    RowBox[{"Shortest", "[", "count__", "]"}], "~~", 
+                    "\"\<,\>\""}], "\[RuleDelayed]", "count"}]}], "]"}], 
+                "]"}]}], "]"}]}], "}"}], "\[Transpose]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"page", ",", "1", ",", "5"}], "}"}]}], "]"}], ",", "1"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"URLDownload", "[", 
+       RowBox[{
+        RowBox[{"temp", "\[LeftDoubleBracket]", 
+         RowBox[{"i", ",", "2", ",", "j"}], "\[RightDoubleBracket]"}], ",", 
+        RowBox[{
+         RowBox[{"temp", "\[LeftDoubleBracket]", 
+          RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "~~", 
+         "\"\< - \>\"", "~~", 
+         RowBox[{"IntegerString", "[", "j", "]"}], "~~", "\"\<.\>\"", "~~", 
+         RowBox[{"StringExtract", "[", 
+          RowBox[{
+           RowBox[{"temp", "\[LeftDoubleBracket]", 
+            RowBox[{"i", ",", "2", ",", "j"}], "\[RightDoubleBracket]"}], ",", 
+           RowBox[{"\"\<.\>\"", "\[Rule]", 
+            RowBox[{"-", "1"}]}]}], "]"}]}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", 
+        RowBox[{"Length", "[", "temp", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "1", ",", 
+        RowBox[{"Length", "[", 
+         RowBox[{"temp", "\[LeftDoubleBracket]", 
+          RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}], "]"}]}], 
+       "}"}]}], "]"}], ";"}]}]}]], "Input",ExpressionUUID->"33889c5d-3f59-\
+4af0-a5c1-bba4ef45f678"]
+},
+WindowSize->{1525.2, 784.8},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (2021\:5e747\:670823\
+\:65e5)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d9fd2c93-aef7-491e-a367-770d34c8c780"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3674, 93, 411, "Input",ExpressionUUID->"72326dd4-1fe4-4c5d-88d7-26008f980fce"],
+Cell[4235, 115, 3039, 81, 297, "Input",ExpressionUUID->"5ae497d3-82e3-4bbb-8952-0045c163810e"],
+Cell[7277, 198, 3811, 91, 361, "Input",ExpressionUUID->"8e80540f-0483-4f72-85e0-1c0808f8f62c"],
+Cell[11091, 291, 3933, 107, 431, "Input",ExpressionUUID->"69ce0e05-d0a7-4cf7-86c0-c7b3425a7ca0"],
+Cell[15027, 400, 3579, 84, 320, "Input",ExpressionUUID->"2b18240c-dcbf-4299-b806-ec7c66705065"],
+Cell[18609, 486, 3104, 72, 174, "Input",ExpressionUUID->"6d414074-fb32-4629-8481-faeeff678118"],
+Cell[21716, 560, 4228, 108, 177, "Input",ExpressionUUID->"f595a717-6fa4-49d0-86ce-b94f52946952"],
+Cell[25947, 670, 1802, 46, 154, "Input",ExpressionUUID->"29b1458f-6d59-41e4-aa5b-a067fb2231b4"],
+Cell[27752, 718, 1243, 29, 46, "Input",ExpressionUUID->"be44dd62-a18f-4c5e-864a-70640213ec78"],
+Cell[28998, 749, 1131, 28, 119, "Input",ExpressionUUID->"09d390b1-cef1-4878-8c60-ef9848661d1e"],
+Cell[30132, 779, 2641, 70, 176, "Input",ExpressionUUID->"df4193ed-cb1f-44c5-b276-7def7e68ea53"],
+Cell[32776, 851, 5392, 119, 548, "Input",ExpressionUUID->"6f8acd6c-bbfc-4c9b-9cbc-4085e0e46d1c"],
+Cell[38171, 972, 3472, 84, 220, "Input",ExpressionUUID->"33889c5d-3f59-4af0-a5c1-bba4ef45f678"]
+}
+]
+*)
+
